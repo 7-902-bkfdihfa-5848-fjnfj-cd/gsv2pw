@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<style>
+    footer {
+        padding: 10px;
+        text-align: center;
+        margin-top: 10px; 
+    }
+
+    .p {
+        padding: 10px;
+        text-align: center;
+        margin-top: auto;
+        margin-bottom: -0px;
+    }
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galaxy Plugins</title>
+    <link rel="stylesheet" href="pluginstyle.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<style>
+    body {
+        font-family: 'Roobert', -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif,
+        "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+        margin: 0;
+        padding: 0;
+        background-color: #f0f3fd; 
+        transition: background-color 0.3s ease-in-out;
+    }
+
+    .search-bar {
+        border-radius: 0px;
+        box-sizing: border-box;
+        color: #222222;
+        cursor: pointer;
+        font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
+        font-size: 24px;
+        font-weight: 600;
+        line-height: 80px;
+        margin-bottom: 0px;
+        padding: 5px 10px;
+        text-align: center;
+        text-decoration: none;
+        touch-action: manipulation;
+        transition: box-shadow 0.2s, -ms-transform 0.1s, -webkit-transform 0.1s, transform 0.1s;
+        user-select: none;
+        -webkit-user-select: none;
+        position: relative;
+        display: flex;
+    }
+
+    .search-bar input {
+        background-color: #f0f3fd;
+        width: 70%;
+        height: 100%;
+        padding: 15px;
+        font-size: 14px;
+        border: 2px solid #222222;
+        outline: none;
+        border-radius: 8px;
+        margin-right: auto;
+    }
+
+    .dropdown-btn {
+        background-color: #73adcf;
+        color: #fff;
+        border: none;
+        padding: 10px 15px;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 8px;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .dropdown-btn:hover .dropdown-content {
+        display: grid;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #73adcf;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+        border-radius: 8px;
+        overflow: hidden;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0px;
+        top: 100%; 
+        left: 0; 
+    }
+
+    .dropdown-content a {
+        color: #fff; 
+        text-decoration: none; 
+        display: block;
+        padding: 10px; 
+        transition: background-color 0.3s;
+    }
+
+    .dropdown-content a:hover {
+        background-color: #5684a7;
+    }
+
+    .dropdown-btn.filter {
+        order: 1; 
+        margin-left: 350px; 
+    }
+
+    .dropdown-btn.sort.rarities {
+        order: 2; 
+        margin-left: 320px; 
+    }
+
+    .content {
+        bottom: 70px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .plugin-box {
+        background-color: #0000;
+        border: 1px solid #0000;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin: 10px;
+        width: calc(25% - 20px); 
+        height: 560px;
+        padding: 10px;
+        text-align: center;
+        transition: box-shadow 0.3s ease-in-out, border-radius 0.3s ease-in-out;
+        display: block;
+    }
+
+    .plugin-box img {
+        width: 100%;
+        height: auto; 
+        border-radius: 5px;
+        transition: border-radius 0.3s ease-in-out;
+    }
+
+    .plugin-box:hover {
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .plugin-box:hover img {
+        border-radius: 10px;
+    }
+    
+    .dropdown-btn.filter {
+        order: 1; 
+        margin-left: 350px; 
+    }
+
+    .dropdown-btn.sort.rarities {
+        order: 2; 
+        margin-left: 320px; 
+    }
+
+
+</style>
+
+<body>
+
+    <div class="container active" id="container">
+        <header class="header">
+            <a href="#" class="logo">Galaxy Plugins</a>
+
+            <nav class="navbar">
+                <a href="index.html">Home</a>
+                <a href="plugins.html" class="active">Plugins</a>
+                <a href="https://discord.com/invite/galaxyplugins">Discord Server</a>
+            </nav>
+
+            <div class="toggle-icon">
+                <i class='bx bx-moon'></i>
+            </div>
+        </header>
+
+        <section class="home">
+            <div class="home-content">
+                <h3>Welcome to</h3>
+                <h1>The <span>Plugins</span> page!</h1>
+                <h3>Here you can get <span> any Plugin </span>you want</h3>
+                <p></p>
+
+                <a href="#" class="btn" id="scrollToPlugins">Click here to browse the Plugins</a>
+            </div>
+
+            <p class="p">&copy; 2024 Galaxy Swapper v2 Plugins. All rights reserved.</p>
+
+            <div class="home-img">
+                <img src="ImgLightPlugins.png">
+            </div>
+        </section>
+    </div>
+
+
+    <div class="selected-filters">
+        <div id="selectedCosmeticFilter" class="selected-filter"></div>
+        <div id="selectedRarityFilter" class="selected-filter"></div>
+    </div>
+    <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Search plugins...">
+        <button class="dropdown-btn filter" id="filterBtn">Cosmetic
+            <i class="bx bx-chevron-down"></i>
+            <div class="dropdown-content filter-content">
+                <a href="#">Skins</a>
+                <a href="#">Pickaxes</a>
+                <a href="#">Backblings</a>
+                <a href="#">Emotes</a>
+                <a href="#">Gliders</a>
+                <a href="#">Wraps</a>
+            </div>
+        </button>
+        
+        <button class="dropdown-btn sort rarities" id="raritiesBtn">Rarities
+            <i class="bx bx-chevron-down"></i>
+            <div class="dropdown-content rarities-content">
+                <a href="#">Dark</a>
+                <a href="#">DC</a>
+                <a href="#">Frozen</a>
+                <a href="#">Gaming</a>
+                <a href="#">Icon</a>
+                <a href="#">Lava</a>
+                <a href="#">Marvel</a>
+                <a href="#">Shadow</a>
+                <a href="#">Slurp</a>
+                <a href="#">Star Wars</a>
+                <a href="#">Legendary</a>
+                <a href="#">Epic</a>
+                <a href="#">Rare</a>
+                <a href="#">Uncommon</a>
+                <a href="#">Common</a>
+            </div>
+        </button>
+    </div>
+
+    <div class="content">
+        <div class="plugin-box" data-search="Runway Racer to Evie" data-cosmetic="back" data-rarity="epic">
+            <img
+                src="https://fortnite.gg/img/items/7876/icon.png?2"
+                alt="Plugin Header Image">
+            <h2>Runway Racer to Evie</h2>
+            <a class="button-27" role="button"
+                href="https://cdn.discordapp.com/attachments/1192863509223063552/1195668686061715476/runway_racer_to_evie.json?ex=65b4d43d&is=65a25f3d&hm=c9f1cf1e4125072ff387729c142d0243fcc9b3818463155c5a4e3450f12ca950&"
+                target="_blank">Download</a>
+        </div>
+
+        <div class="plugin-box" data-search="Winterfest bushranger to P33LY" data-cosmetic="Pickaxes" data-rarity="legendary">
+            <img
+                src="https://fortnite.gg/img/items/5882/icon.png?3"
+                alt="Plugin Header Image">
+            <h2>Winterfest bushranger to P33LY</h2>
+            <a class="button-27" role="button"
+                href="https://cdn.discordapp.com/attachments/1192863509223063552/1196104398938578954/winterfest_bushranger_to_P33LY.json?ex=65b66a07&is=65a3f507&hm=23cf10ae8aec0d450648481b6d493e5dcb44f361cb0d5e0fe1e23bdc0c1aa656&"
+                target="_blank">Download</a>
+        </div>
+
+        <div class="plugin-box" data-search="Runway Racer to Helsie" data-cosmetic="skins" data-rarity="common">
+            <img
+                src="https://media.discordapp.net/attachments/1182318218363281418/1182318218925326376/icon.png?ex=65b26725&is=659ff225&hm=c32c49142682629a65b9015de8d56517793c87e4d15452c8287b61d3951c3c7e&=&format=webp&quality=lossless"
+                alt="Plugin Header Image">
+            <h2>Runway Racer to Helsie</h2>
+            <a class="button-27" role="button"
+                href="https://cdn.discordapp.com/attachments/1182318218363281418/1182318218543632394/Runway_Racer_to_Helsie.json?ex=65b26725&is=659ff225&hm=40d4610157d3d588122b03a972d5afa7f34e3c271fbdb7c89aecfa01651d9403&"
+                target="_blank">Download</a>
+        </div>
+
+        <div class="plugin-box" data-search="Runway Racer To Echo" data-cosmetic="Emotes" data-rarity="uncommon">
+            <img
+                src="https://media.discordapp.net/attachments/1182068351061729391/1182068351716053134/icon.png?ex=65b17e70&is=659f0970&hm=aa8dc701aef5100c7b88c734ea1692164406feb3a210da5ac5be3e48684bf06d&=&format=webp&quality=lossless"
+                alt="Plugin Header Image">
+            <h2>Runway Racer To Echo</h2>
+            <a class="button-27" role="button"
+                href="https://cdn.discordapp.com/attachments/1182068351061729391/1182068351221121104/Runway_Racer_To_Echo_2.json?ex=65b17e70&is=659f0970&hm=74450313e7918797e8cd8c21a0c43642c64f3f97e36bd2734dd06c8ae51cb89b&"
+                target="_blank">Download</a>
+        </div>
+
+        <div class="plugin-box" data-search="Runway Racer To Echo" data-cosmetic="Gliders" data-rarity="star wars">
+            <img
+                src="https://fortnite.gg/img/items/10007/icon.png?2"
+                alt="Plugin Header Image">
+            <h2>Runway Racer To Echo</h2>
+            <a class="button-27" role="button"
+                href="https://cdn.discordapp.com/attachments/1193170089923579964/1193170090120716388/winterfest_bushranger_to_itadori.json?ex=65b4f7bd&is=65a282bd&hm=0dd9093d7c959429fd0954b8776a368b143e33636cd7d937946e10a69e3e70c8&"
+                target="_blank">Download</a>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('searchInput').addEventListener('input', function () {
+            var searchQuery = this.value.toLowerCase();
+            var pluginBoxes = document.querySelectorAll('.plugin-box');
+
+            pluginBoxes.forEach(function (box) {
+                var boxSearchData = box.getAttribute('data-search').toLowerCase();
+
+                if (boxSearchData.includes(searchQuery) || searchQuery === '') {
+                    box.style.display = 'block';
+                } else {
+                    box.style.display = 'none';
+                }
+            });
+        });
+    </script>
+
+    <script>
+        document.getElementById('scrollToPlugins').addEventListener('click', function () {
+            document.querySelector('.content').scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    </script>
+
+<script>
+    document.getElementById('filterBtn').addEventListener('click', function () {
+        var selectedCosmetic = document.querySelector('.filter-content a.active')?.innerText.toLowerCase();
+        var selectedRarity = document.querySelector('.rarities-content a.active')?.innerText.toLowerCase();
+
+        var pluginBoxes = document.querySelectorAll('.plugin-box');
+
+        pluginBoxes.forEach(function (box) {
+            var cosmeticType = box.getAttribute('data-cosmetic').toLowerCase();
+            var rarityType = box.getAttribute('data-rarity').toLowerCase();
+
+            var displayBox = true;
+
+            if (selectedCosmetic && cosmeticType !== selectedCosmetic) {
+                displayBox = false;
+            }
+
+            if (selectedRarity && rarityType !== selectedRarity) {
+                displayBox = false;
+            }
+
+            box.style.display = displayBox ? 'block' : 'none';
+        });
+    });
+
+    document.querySelectorAll('.filter-content a').forEach(function (item) {
+        item.addEventListener('click', function () {
+            document.querySelectorAll('.filter-content a').forEach(function (otherItem) {
+                otherItem.classList.remove('active');
+            });
+
+            item.classList.add('active');
+
+            document.getElementById('filterBtn').click();
+        });
+    });
+
+    document.querySelectorAll('.rarities-content a').forEach(function (item) {
+        item.addEventListener('click', function () {
+            document.querySelectorAll('.rarities-content a').forEach(function (otherItem) {
+                otherItem.classList.remove('active');
+            });
+
+            item.classList.add('active');
+
+            document.getElementById('filterBtn').click();
+        });
+    });
+</script>
+
+<script>
+    document.getElementById('filterBtn').addEventListener('click', function () {
+        var selectedCosmetic = document.querySelector('.filter-content a.active')?.innerText.toLowerCase();
+        var selectedRarity = document.querySelector('.rarities-content a.active')?.innerText.toLowerCase();
+
+        var pluginBoxes = document.querySelectorAll('.plugin-box');
+
+        pluginBoxes.forEach(function (box) {
+            var cosmeticType = box.getAttribute('data-cosmetic').toLowerCase();
+            var rarityType = box.getAttribute('data-rarity').toLowerCase();
+
+            var displayBox = (!selectedCosmetic || cosmeticType === selectedCosmetic) &&
+                             (!selectedRarity || rarityType === selectedRarity);
+
+            box.style.display = displayBox ? 'block' : 'none';
+        });
+    });
+
+    document.querySelectorAll('.filter-content a').forEach(function (item) {
+        item.addEventListener('click', function () {
+            document.querySelectorAll('.filter-content a').forEach(function (otherItem) {
+                otherItem.classList.remove('active');
+            });
+
+            item.classList.add('active');
+
+            document.getElementById('filterBtn').click();
+        });
+    });
+
+    document.querySelectorAll('.rarities-content a').forEach(function (item) {
+        item.addEventListener('click', function () {
+            document.querySelectorAll('.rarities-content a').forEach(function (otherItem) {
+                otherItem.classList.remove('active');
+            });
+
+            item.classList.add('active');
+
+            document.getElementById('filterBtn').click();
+        });
+    });
+</script>
+
+<script>
+    document.getElementById('filterBtn').addEventListener('click', function () {
+        var selectedCosmetic = document.querySelector('.filter-content a.active')?.innerText.toLowerCase();
+        var selectedRarity = document.querySelector('.rarities-content a.active')?.innerText.toLowerCase();
+
+        var pluginBoxes = document.querySelectorAll('.plugin-box');
+
+        var noResultsMessage = document.getElementById('noResultsMessage');
+
+        var hasResults = false;
+
+        pluginBoxes.forEach(function (box) {
+            var cosmeticType = box.getAttribute('data-cosmetic').toLowerCase();
+            var rarityType = box.getAttribute('data-rarity').toLowerCase();
+
+            var displayBox = (!selectedCosmetic || cosmeticType === selectedCosmetic) &&
+                (!selectedRarity || rarityType === selectedRarity);
+
+            if (displayBox) {
+                box.style.display = 'block';
+                hasResults = true;
+            } else {
+                box.style.display = 'none';
+            }
+        });
+
+        if (!hasResults) {
+            noResultsMessage.style.display = 'block';
+        } else {
+            noResultsMessage.style.display = 'none';
+        }
+    });
+</script>
+
+<script>
+    document.getElementById('scrollToPlugins').addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector('.content').scrollIntoView({
+            behavior: 'smooth'
+        });
+    });
+
+    document.getElementById('filterBtn').addEventListener('click', function (e) {
+        e.preventDefault();
+    });
+
+    document.querySelectorAll('.filter-content a').forEach(function (item) {
+        item.addEventListener('click', function () {
+            document.querySelectorAll('.filter-content a').forEach(function (otherItem) {
+                otherItem.classList.remove('active');
+            });
+
+            item.classList.add('active');
+
+            document.getElementById('filterBtn').click();
+        });
+    });
+
+    document.querySelectorAll('.rarities-content a').forEach(function (item) {
+        item.addEventListener('click', function (e) {
+            e.preventDefault(); 
+
+            document.querySelectorAll('.rarities-content a').forEach(function (otherItem) {
+                otherItem.classList.remove('active');
+            });
+
+            item.classList.add('active');
+
+            document.getElementById('filterBtn').click();
+        });
+    });
+</script>
+
+<script>
+    document.getElementById('searchInput').addEventListener('input', function () {
+        var searchQuery = this.value.toLowerCase();
+        var pluginBoxes = document.querySelectorAll('.plugin-box');
+    
+        var noResultsMessage = document.getElementById('noResultsMessage');
+        var hasResults = false;
+    
+        pluginBoxes.forEach(function (box) {
+            var boxSearchData = box.getAttribute('data-search').toLowerCase();
+    
+            if (boxSearchData.includes(searchQuery) || searchQuery === '') {
+                box.style.display = 'block';
+                hasResults = true;
+            } else {
+                box.style.display = 'none';
+            }
+        });
+    
+        if (!hasResults) {
+            noResultsMessage.style.display = 'block';
+            scrollToBottom();
+        } else {
+            noResultsMessage.style.display = 'none';
+        }
+    });
+    
+    function scrollToBottom() {
+        document.body.scrollTop = document.body.scrollHeight;
+        document.documentElement.scrollTop = document.documentElement.scrollHeight;
+    }</script>
+
+<style>
+    #noResultsMessage {
+        display: none;
+        text-align: center;
+        font-size: 18px;
+        font-weight: bold;
+        padding: 20px;
+        margin-top: 500px;
+    }
+</style>
+
+<div id="noResultsMessage" style="display: none; text-align: center; font-size: 18px; font-weight: bold; padding: 20px;">
+    No results found
+</div>
+
+    <script src="pluginscript.js"></script>
+</body>
+
+</html>
